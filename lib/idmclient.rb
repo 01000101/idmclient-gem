@@ -5,6 +5,8 @@ require 'net/http'
 require 'http-cookie'
 # Needed for '{...}'.to_json
 require 'json'
+# Needed for request Id (UUID)
+require 'securerandom'
 # Needed for MiqPassword.decrypt
 # require 'miq-password'
 
