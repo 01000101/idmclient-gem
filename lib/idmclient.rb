@@ -6,7 +6,7 @@ require 'http-cookie'
 # Needed for '{...}'.to_json
 require 'json'
 # Needed for MiqPassword.decrypt
-require 'miq-password'
+# require 'miq-password'
 
 class IDMClient
   attr_reader :http, :cookiejar, :uri_base, :uri_auth, :uri_data, :api_version
@@ -32,7 +32,8 @@ class IDMClient
       req.form_data = {
         :user => username,
         # Cloudforms / ManageIQ - Decrypt password if necessary
-        :password => (password.match(/^v\d\:\{.*\}$/)) ? MiqPassword.decrypt(password) : password
+        # :password => (password.match(/^v\d\:\{.*\}$/)) ? MiqPassword.decrypt(password) : password
+        :password => password
       }
       # Make the authentication request
       res = http.request req
