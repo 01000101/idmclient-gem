@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'idmclient'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.date        = '2017-09-27'
   s.summary     = "Wrapper for FreeIPA & Red Hat Identity Management (IdM)"
   s.description = "FreeIPA & Red Hat Identity Management (IdM) JSON-RPC API wrapper"
