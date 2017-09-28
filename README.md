@@ -2,11 +2,17 @@
 
 ## Installation
 
+### General
+
+This Gem is published and can be found at https://rubygems.org/gems/idmclient .
+
+To install locally, simply run `gem install idmclient`. 
+
 ### Cloudforms / ManageIQ
 
 In `/var/www/miq/vmdb` (you can get there by simply executing `vmdb`), edit the `Gemfile` to include a new line:
 
-`gem "idmclient", ">=0.1.0", :require => false, :git => "https://github.com/01000101/idmclient-gem.git", :branch => "master"`
+`gem 'idmclient', '~> 0.1.1'`
 
 Then update the Gems by executing `bundle update`. That's it. :)
 
