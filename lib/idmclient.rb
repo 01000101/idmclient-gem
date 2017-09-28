@@ -20,7 +20,7 @@ end
 class IDMClient
   attr_reader :http, :cookiejar, :uri_base, :uri_auth, :uri_data, :api_version
 
-  def initialize(uri, ca_file='/etc/ipa/ca.crt', api_version='2.228')
+  def initialize(uri, ca_file='/etc/ipa/ca.crt', api_version='2.228', debug=false)
     @uri_base = uri
     @uri_auth = URI("#{uri_base}/session/login_password")
     @uri_data = URI("#{uri_base}/session/json")
@@ -29,7 +29,10 @@ class IDMClient
     @http = Net::HTTP.new(uri_auth.host, uri_auth.port)
     http.use_ssl = uri_auth.scheme == 'https'
     http.ca_file = ca_file
-    http.set_debug_output($stdout)
+    # Configure debug output
+    if debug
+      http.set_debug_output($stdout)
+    end
     # Prepare cookie storage
     @cookiejar = HTTP::CookieJar.new
   end
