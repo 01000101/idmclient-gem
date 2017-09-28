@@ -1,5 +1,15 @@
 # FreeIPA & Red Hat Identity Management (IdM) Client
 
+## Installation
+
+### Cloudforms / ManageIQ
+
+In `/var/www/miq/vmdb` (you can get there by simply executing `vmdb`), edit the `Gemfile` to include a new line:
+
+`gem "idmclient", ">=0.1.0", :require => false, :git => "https://github.com/01000101/idmclient-gem.git", :branch => "master"`
+
+Then update the Gems by executing `bundle update`. That's it. :)
+
 ## Examples
 
 ### Authentication
