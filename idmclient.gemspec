@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.authors     = ["Joshua Cornutt"]
   s.email       = 'joshua@joscor.com'
   s.files       = ["lib/idmclient.rb"]
-  s.homepage    = 'http://rubygems.org/gems/idmclient'
+  s.homepage    = 'https://github.com/01000101/idmclient-gem'
   s.license     = 'MIT'
 end
