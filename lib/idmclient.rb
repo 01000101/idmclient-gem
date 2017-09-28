@@ -7,8 +7,13 @@ require 'http-cookie'
 require 'json'
 # Needed for request Id (UUID)
 require 'securerandom'
-# Needed for MiqPassword.decrypt
-# require 'miq-password'
+
+# Test if this is executed in a ManageIQ / Cloudforms environment
+MIQ_METHOD = defined? MIQ_ID && defined? MIQ_URI
+if MIQ_METHOD
+  # Needed for MiqPassword.decrypt
+  require 'miq-password'
+end
 
 class IDMClient
   attr_reader :http, :cookiejar, :uri_base, :uri_auth, :uri_data, :api_version
@@ -34,8 +39,7 @@ class IDMClient
       req.form_data = {
         :user => username,
         # Cloudforms / ManageIQ - Decrypt password if necessary
-        # :password => (password.match(/^v\d\:\{.*\}$/)) ? MiqPassword.decrypt(password) : password
-        :password => password
+        :password => (MIQ_METHOD && password.match(/^v\d\:\{.*\}$/)) ? MiqPassword.decrypt(password) : password
       }
       # Make the authentication request
       res = http.request req
