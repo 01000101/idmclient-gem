@@ -6,7 +6,7 @@
 
 This Gem is published and can be found at https://rubygems.org/gems/idmclient .
 
-To install locally, simply run `gem install idmclient`. 
+To install locally, simply run `gem install idmclient`.
 
 ### Cloudforms / ManageIQ
 
@@ -24,7 +24,7 @@ Then update the Gems by executing `bundle update`. That's it. :)
 require 'idmclient'
 
 # Init a connection
-idm = IDMClient.new('https://ipa.acme.co/ipa')
+idm = IDMClient.new('https://ipa.acme.co/ipa', :debug => true)
 # Authentication w/ username + password
 idm.authenticate('YOUR_USERNAME', 'YOUR_PASSWORD')
 ```
