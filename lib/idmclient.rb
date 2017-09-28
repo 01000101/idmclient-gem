@@ -9,10 +9,12 @@ require 'json'
 require 'securerandom'
 
 # Test if this is executed in a ManageIQ / Cloudforms environment
-MIQ_METHOD = !(defined?(MIQ_ID)).nil? || !(defined?(MIQ_URIx)).nil?
-if MIQ_METHOD
+begin
   # Needed for MiqPassword.decrypt
   require 'miq-password'
+  MIQ_METHOD = true
+rescue LoadError
+  MIQ_METHOD = false
 end
 
 class IDMClient
