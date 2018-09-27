@@ -22,11 +22,12 @@ class IDMClient
 
   def initialize(uri, options=Hash.new)
     # Set defaults
-    options.reverse_merge!({
+    default_options = {
       :ca_file => '/etc/ipa/ca.crt',
       :api_version => '2.228',
       :debug => false
-    })
+    }
+    options = default_options.merge(options)
     @uri_base = uri
     @uri_auth = URI("#{uri_base}/session/login_password")
     @uri_data = URI("#{uri_base}/session/json")
